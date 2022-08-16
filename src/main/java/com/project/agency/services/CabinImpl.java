@@ -19,4 +19,21 @@ public class CabinImpl implements CabinInter{
 
         return cabinRepo.findCabins(arriveDate);
     }
+
+    @Override
+    public Cabin addCabin(Cabin C) {
+        return cabinRepo.save(C);
+    }
+
+    @Override
+    public Long removeCabin(Long idc) {
+        cabinRepo.deleteById(idc);
+        return idc;
+    }
+
+
+    @Override
+    public Cabin updateCabin(Cabin C) {
+        return cabinRepo.save(C);
+    }
 }

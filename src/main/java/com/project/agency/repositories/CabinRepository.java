@@ -16,6 +16,6 @@ public interface CabinRepository extends JpaRepository<Cabin, Long> {
 
     @Transactional
     @Modifying
-    @Query("SELECT C from Cabin C WHERE C.availability = 'AVAILABLE' OR C.endDate = :X")
+    @Query("SELECT C from Cabin C WHERE C.availability = 'AVAILABLE' OR C.endDate <= :X")
     List<Cabin> findCabins(Date X);
 }

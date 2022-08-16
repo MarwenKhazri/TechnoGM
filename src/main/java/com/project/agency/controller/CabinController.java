@@ -31,4 +31,31 @@ public class CabinController {
         Date leaveD = formatter.parse(arrive);
         return cabinService.findCabins(arriveD, leaveD, passengers);
     }
+
+    @SneakyThrows
+    @PostMapping("/Create")
+    @ResponseBody
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Cabin createCabin (@RequestBody Cabin C)
+    {
+        return cabinService.addCabin(C);
+    }
+
+    @SneakyThrows
+    @DeleteMapping("/Remove")
+    @ResponseBody
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Long removeCabin (@PathVariable Long idc)
+    {
+        return cabinService.removeCabin(idc);
+    }
+
+    @SneakyThrows
+    @PutMapping("/Update")
+    @ResponseBody
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Cabin updateCabin (@RequestBody Cabin C)
+    {
+        return cabinService.updateCabin(C);
+    }
 }

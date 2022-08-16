@@ -14,9 +14,8 @@ import javax.persistence.ManyToOne;
 public class Armchair extends Cabin{
 
     private String subCategory;
-    private int Adultcapacity;
-    private int Childrencapacity;
-    private int Quantity;
+    private int capacity;
+    private int quantity;
 
     @ManyToOne
     @JsonIgnore
