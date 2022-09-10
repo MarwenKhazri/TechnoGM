@@ -2,20 +2,17 @@ package com.project.agency.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-enum Availability
-{
-    NOTAVAILABLE, AVAILABLE, MAINTENANCE
-}
 
 @Entity
 @Table(name="Cabin")
 @Data
-public abstract class Cabin implements Serializable {
+public class Cabin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +33,22 @@ public abstract class Cabin implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name="availability")
     private Availability availability;
+
+    @Column(name = "capacity")
+    private int capacity;
+
+    @Column(name = "price")
+    private float price;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="subCategory")
+    private SubCategory subCategory;
+
+    @ManyToOne
+    @JsonIgnore
+    private Reservation reservation;
+
+    @ManyToOne
+    private Deck deck;
 
 }

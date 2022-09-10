@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
@@ -24,12 +25,13 @@ public class CabinController {
     @GetMapping("/FindCabins")
     @ResponseBody
     @CrossOrigin(origins = "http://localhost:4200")
-    public List<Cabin> findCabins (@RequestParam("arrive") String arrive, @RequestParam("leave") String leave, @RequestParam("passengers") int passengers)
+    public List<Cabin> findCabins (@RequestParam("arrive") String arrive, @RequestParam("leave") String leave, @RequestParam("passengers") int passengers, @RequestParam("category") String category)
     {
+        System.out.println(category);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date arriveD = formatter.parse(arrive);
         Date leaveD = formatter.parse(arrive);
-        return cabinService.findCabins(arriveD, leaveD, passengers);
+        return cabinService.findCabins(arriveD, leaveD, passengers, category);
     }
 
     @SneakyThrows
@@ -57,5 +59,14 @@ public class CabinController {
     public Cabin updateCabin (@RequestBody Cabin C)
     {
         return cabinService.updateCabin(C);
+    }
+
+
+    @GetMapping("/MyCabins/{myCabins}")
+    @ResponseBody
+    @CrossOrigin(origins = "http://localhost:4200")
+    public List<Cabin> myCabins (@PathVariable Long[] myCabins)
+    {
+        return cabinService.cabinsInCart(myCabins);
     }
 }

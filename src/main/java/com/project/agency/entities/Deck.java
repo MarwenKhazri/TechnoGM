@@ -21,17 +21,13 @@ public class Deck implements Serializable {
     @Column(name = "deckName")
     private String deckName;
 
-    @OneToMany(mappedBy = "deck")
-    @JsonIgnore
-    private Set<NormalCabin> listNormalCabins;
+    @Column(name = "deckNumber")
+    private int deckNumber;
 
     @OneToMany(mappedBy = "deck")
     @JsonIgnore
-    private Set<LuxuryCabin> listLuxuryCabins;
+    private Set<Cabin> listCabins;
 
-    @OneToMany(mappedBy = "deck")
-    @JsonIgnore
-    private Set<Armchair> listArmchairCabins;
 
 
 
