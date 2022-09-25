@@ -1,7 +1,7 @@
 package com.project.agency.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -11,7 +11,11 @@ import java.util.Date;
 
 @Entity
 @Table(name="Cabin")
-@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Cabin implements Serializable {
 
     @Id

@@ -42,7 +42,7 @@ public class ReservationImpl implements ReservationInter{
         R.setReservationCabins(cabins);
         R.setReservationDate(today);
         reservationRepo.save(R);
-        cabins.forEach( C -> C.setReservation(R));
+        //cabins.forEach( C -> C.setReservation(R));
         cabins.forEach( C -> {
             C.setReservation(R);
             C.setStartDate(R.getCheckIn());

@@ -1,7 +1,7 @@
 package com.project.agency.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +15,12 @@ enum Restaurant {
 
 
 @Entity
-@Data
+@Table(name="Reservation")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Reservation implements Serializable {
 
     @Id
@@ -54,8 +59,8 @@ public class Reservation implements Serializable {
     @Column(name = "solarium")
     private boolean solarium;
 
+
     @OneToMany(mappedBy = "reservation")
-    @JsonIgnore
     private Set<Cabin> reservationCabins;
 
     @Column(name = "totalPrice")

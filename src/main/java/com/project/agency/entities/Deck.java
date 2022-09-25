@@ -1,7 +1,7 @@
 package com.project.agency.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +10,11 @@ import java.util.Set;
 
 @Entity
 @Table(name="Deck")
-@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Deck implements Serializable {
 
     @Id
